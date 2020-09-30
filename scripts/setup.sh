@@ -70,6 +70,8 @@ composer -V
 echo "==================================> Information Composer"
 git --version
 
-echo "Setup. Done.
-Config magento follow this link: https://github.com/FightLightDiamond/mg2-newbie/blob/master/docs/setup.md"
+echo "Setup. Done."
+echo "Config follow this link: https://github.com/FightLightDiamond/mg2-newbie/blob/master/docs/config.md"
+echo "Full manual setup and config follow this link: https://github.com/FightLightDiamond/mg2-newbie/blob/master/docs/setup.md"
+
 echo "<< Thank you!!!!! >>"

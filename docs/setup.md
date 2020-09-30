@@ -128,8 +128,10 @@ sudo apt install curl git -y
 curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
 ```
 
-Để cài chúng ta cần lấy `authentication keys`. Public key là username;  private key là  password. 
-Truy cập ( https://marketplace.magento.com/customer/accessKeys/ ). Để lấy thông tin như sau 
+Để cài chúng ta cần lấy `authentication keys`. 
+Public key là username;  private key là  password. 
+Truy cập ( https://marketplace.magento.com/customer/accessKeys/ ). 
+Để lấy thông tin như sau 
 ![authentication keys](https://websiteforstudents.com/wp-content/uploads/2018/09/xmagento_ubuntu_keuy.png.pagespeed.ic.ouyKj8JlvY.webp)
 
 Bây giờ đã đủ kiều kiện, chạy commands để download `magento`
@@ -287,7 +289,7 @@ Sau đó cần khởi động lại máy để cập nhật cấu hình
  sudo reboot
 ```
 
-Sau khi khởi đông lại, bạn có thể truy cập phpstorm thông qua pplication Menu of Ubuntu 20.04 LTS
+Sau khi khởi đông lại, bạn có thể truy cập phpstorm thông qua application Menu of Ubuntu 20.04 LTS
 ![access phpstorm](https://linuxhint.com/wp-content/uploads/2020/04/12-11.png)
 
 ### Cài đặt Xdebug 
@@ -332,11 +334,12 @@ Tùy theo trình duyệt chrome hay firefox sẽ có extension khác nhau.
 
 #### Add config debug 
 Cần tạo config để IDE lắng nghe trình duyệt
+
 ![config debug](https://vi-magento.com/wp-content/uploads/2020/08/Screenshot-from-2020-08-17-22-01-21.png)
 
 Khi cần config chú ý tới cấu hình Server
-- Host: địa chỉ host 80 (mặc định thường là localhost)
-- Port: cổng run (mặc định thường là )lắng nghe
+- Host: địa chỉ host (mặc định thường là localhost)
+- Port: cổng run (mặc định thường là 80)lắng nghe
 - Debugger: Xdebug
 
 ### Developer Toolbar for Magento2
@@ -379,5 +382,5 @@ Kết quả tương tự như sau:
 ```
 
 Nếu thành công góc phía trên bên phải màn hình sẽ xuất hiện icon debug. 
-Thử xem tab Queries thu duoc ket qua tuong tu:
+Thử xem tab Queries thu được kết quả tương tự:
 ![queries](https://github.com/vpietri/magento2-developer-quickdevbar/raw/master/doc/images/qdb_screen_queries.png)

@@ -1,0 +1,4 @@
+php bin/magento setup:install --admin-firstname=Fight --admin-lastname=Light --admin-email=i.am.m.cuong@gmail.com --admin-user=admin --admin-password='1234aA@' --base-url=http://mage.com --base-url-secure=https://mage.com --backend-frontname=admin --db-host=127.0.0.1 --db-name=magento --db-user=magentouser --db-password=new_password_here --use-rewrites=1 --language=en_US --currency=USD --timezone=Asia/Ho_Chi_Minh --use-secure-admin=0 --admin-use-security-key=0 --session-save=files --use-sample-data
+
+
+sudo -u www-data php bin/magento setup:install --base-url-secure=https://mage.com/ --db-host=localhost --db-name=magento --db-user=magentouser --db-password=new_password_here --admin-firstname=Admin --admin-lastname=User --admin-email=i.am.m.cuong@gmail.com --admin-user=admin --admin-password=admin123 --language=en_US --currency=USD --timezone=Asia/Ho_Chi_Minh --use-rewrites=1

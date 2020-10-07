@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Catalog\Model\Product">
+        <plugin name="cuongpm_training_update_product_name" type="CuongPM\Training\Plugin\UpdateProduct" />
+    </type>
+    <preference for="CuongPM\Training\Api\PostManagementInterface" type="CuongPM\Training\Model\PostManagement"/>
+</config>

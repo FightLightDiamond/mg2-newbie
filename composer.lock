@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a03edc1c8ee05f82886eebd6ed288df8",
+    "content-hash": "d3b37d5f63cf1dad4d9a5ea375dfcbc6",
     "packages": [
         {
             "name": "colinmollenhour/cache-backend-file",
@@ -3323,6 +3323,12 @@
                 "laminas",
                 "zf"
             ],
+            "funding": [
+                {
+                    "url": "https://funding.communitybridge.org/projects/laminas-project",
+                    "type": "community_bridge"
+                }
+            ],
             "time": "2020-05-20T16:45:56+00:00"
         },
         {
@@ -3561,6 +3567,16 @@
                 "log",
                 "logging",
                 "psr-3"
+            ],
+            "funding": [
+                {
+                    "url": "https://github.com/Seldaek",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/monolog/monolog",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-05-22T07:31:27+00:00"
         },
@@ -4353,6 +4369,16 @@
                 "linter",
                 "parser",
                 "validator"
+            ],
+            "funding": [
+                {
+                    "url": "https://github.com/Seldaek",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/seld/jsonlint",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-04-30T19:05:18+00:00"
         },
@@ -5753,6 +5779,48 @@
                 "yui"
             ],
             "time": "2018-01-15T15:26:51+00:00"
+        },
+        {
+            "name": "vpietri/adm-quickdevbar",
+            "version": "0.1.16",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vpietri/magento2-developer-quickdevbar.git",
+                "reference": "4cadea3d6800b5fc432bdd021111d3ea6fddbe4a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vpietri/magento2-developer-quickdevbar/zipball/4cadea3d6800b5fc432bdd021111d3ea6fddbe4a",
+                "reference": "4cadea3d6800b5fc432bdd021111d3ea6fddbe4a",
+                "shasum": ""
+            },
+            "require": {
+                "magento/magento-composer-installer": "*",
+                "php": "~5.5|~5.6|~7.0"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "ADM\\QuickDevBar\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "OSL-3.0",
+                "AFL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Vincent Pietri",
+                    "homepage": "http://www.vincent-pietri.fr/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "QuickDevBar is a developer toolbar for magento 2",
+            "time": "2020-01-02T21:48:57+00:00"
         },
         {
             "name": "webonyx/graphql-php",
@@ -8119,6 +8187,12 @@
                 "s3",
                 "sftp",
                 "storage"
+            ],
+            "funding": [
+                {
+                    "url": "https://offset.earth/frankdejonge",
+                    "type": "other"
+                }
             ],
             "time": "2020-05-18T15:13:39+00:00"
         },

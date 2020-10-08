@@ -11,7 +11,7 @@ interface PostManagementInterface
 
     /**
      * GET for Post api
-     * @return string
+     * @return \Magento\Framework\Controller\Result\Json|mixed[]
      */
     public function index();
 
@@ -24,7 +24,7 @@ interface PostManagementInterface
     /**
      * Find for Post api
      * @param int $id
-     * @return mixed[]
+     * @return \Magento\Framework\Controller\Result\Json|mixed[]
      */
     public function show($id);
 

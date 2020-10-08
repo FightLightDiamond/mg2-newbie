@@ -11,27 +11,36 @@ class PostManagement implements \CuongPM\Training\Api\PostManagementInterface
     protected $factory;
     protected $collectionFactory;
     protected $request;
+    protected $response;
     protected $logger;
+    private $jsonResultFactory;
 
     public function __construct(
         \CuongPM\Training\Model\PostFactory $factory,
         \CuongPM\Training\Model\ResourceModel\Post\CollectionFactory $collectionFactory,
         \Magento\Framework\App\RequestInterface $request,
+        \Magento\Framework\Webapi\Rest\Response $response,
+        \Magento\Framework\Controller\Result\JsonFactory $jsonResultFactory,
         \Psr\Log\LoggerInterface $logger
     ) {
         $this->collectionFactory = $collectionFactory;
         $this->factory = $factory;
         $this->request = $request;
+        $this->response = $response;
+        $this->jsonResultFactory = $jsonResultFactory;
         $this->logger = $logger;
     }
 
     /**
-     * @return array|string
+     * @return \Magento\Framework\Controller\Result\Json|string
      */
     public function index()
     {
         $collection = $this->collectionFactory->create();
-        return $collection->getData();
+        $posts = $collection->getData();
+        $result = $this->jsonResultFactory->create();
+        $result->setData($posts);
+        return $result;
     }
 
     /**
@@ -55,7 +64,7 @@ class PostManagement implements \CuongPM\Training\Api\PostManagementInterface
     /**
      * Find post
      * @param int $id
-     * @return array|ResourceModel\Post\Collection
+     * @return \Magento\Framework\Controller\Result\Json|mixed[]|void
      */
     public function show($id)
     {
@@ -68,17 +77,14 @@ class PostManagement implements \CuongPM\Training\Api\PostManagementInterface
                 'status' => 'ok',
                 'data' => $post
             ];
-
-            // Return data format json
-            header('Content-Type: application/json');
-            echo json_encode($res);
-            exit;
         } catch (\Exception $exception) {
-            return [
+            $res = [
                 'status' => 'error',
                 'message' => $exception->getMessage()
             ];
         }
+        // Return data format json
+        $this->response->setContent(json_encode($res))->sendResponse();
     }
 
     /**

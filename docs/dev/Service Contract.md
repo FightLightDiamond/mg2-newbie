@@ -1,6 +1,6 @@
 ## Service Contract
 - Một bộ các `interfaces` định nghĩa các `core services` cung cấp bởi `framework`.
-- Dịnh nghĩa các phương thức cần thiết để làm việc như: `queue`, `job`, `api`, `db` ... 
+- Định nghĩa các phương thức cần thiết để làm việc như: `queue`, `job`, `api`, `db` ... 
 - Mỗi `contract` đều có sẵn một `corresponding implementation`( `implementation` với các `drivers` khác nhau) tương ứng được cung cấp bởi `framework`
 - Như bộ documentation ngắn gọn về các chức năng của Framework
 
@@ -114,6 +114,6 @@ Metadata interfaces provide methods for retrieving metadata, the interfaces are 
 
 [Document extra]
 - [Mageto devdoc](https://devdocs.magento.com/guides/v2.4/extension-dev-guide/service-contracts/service-contracts.html)
-- [Muc tieu thiet ke](https://edwardthienhoang.wordpress.com/2018/01/08/low-coupling-and-high-cohesion/)
+- [Mục tiêu thiết kế](https://edwardthienhoang.wordpress.com/2018/01/08/low-coupling-and-high-cohesion/)
 - [Nguyên lý thiết kế ](https://edwardthienhoang.wordpress.com/2013/11/09/cac-nguyen-ly-thiet-ke-huong-doi-tuong/)
 - [OPP](https://github.com/FightLightDiamond/mg2-newbie/blob/develop/docs/dev/OPP.md)

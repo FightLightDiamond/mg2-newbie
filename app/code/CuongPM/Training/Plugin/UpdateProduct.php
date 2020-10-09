@@ -3,7 +3,6 @@
 
 namespace CuongPM\Training\Plugin;
 
-
 use Magento\Framework\Event\ManagerInterface as EventManager;
 
 class UpdateProduct

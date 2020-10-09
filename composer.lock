@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d3b37d5f63cf1dad4d9a5ea375dfcbc6",
+    "content-hash": "839ed8a19cc57008806fe879f905ac7c",
     "packages": [
         {
             "name": "colinmollenhour/cache-backend-file",

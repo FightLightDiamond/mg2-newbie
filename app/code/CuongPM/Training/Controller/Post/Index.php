@@ -19,9 +19,7 @@ class Index extends \Magento\Framework\App\Action\Action
         $data = $this->postFactory->create()->getCollection();
 
         foreach ($data as $value) {
-            echo "<pre>";
-            print_r($value->getData());
-            echo "</pre>";
+            return $value->getData();
         }
     }
 }

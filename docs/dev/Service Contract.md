@@ -116,4 +116,4 @@ Metadata interfaces provide methods for retrieving metadata, the interfaces are 
 - [Mageto devdoc](https://devdocs.magento.com/guides/v2.4/extension-dev-guide/service-contracts/service-contracts.html)
 - [Muc tieu thiet ke](https://edwardthienhoang.wordpress.com/2018/01/08/low-coupling-and-high-cohesion/)
 - [Nguyên lý thiết kế ](https://edwardthienhoang.wordpress.com/2013/11/09/cac-nguyen-ly-thiet-ke-huong-doi-tuong/)
-- [OPP](https://topdev.vn/blog/oop-la-gi/)
+- [OPP](https://github.com/FightLightDiamond/mg2-newbie/blob/develop/docs/dev/OPP.md)

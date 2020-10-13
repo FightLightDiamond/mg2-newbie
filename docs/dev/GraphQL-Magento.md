@@ -78,18 +78,6 @@ The <module_name>/etc/schema.graphqls file:
 - Points to the resolvers that verify and process the input data and response.
 - Serves as the source for displaying the schema in a GraphQL browser.
 - Defines which objects are cached.
-### Filter
-```
-<type name="Magento\CatalogGraphQl\Model\Resolver\Products\FilterArgument\ProductEntityAttributesForAst" >
-  <arguments>
-    <argument name="additionalAttributes" xsi:type="array">
-      <item name="field_to_sort" xsi:type="string">field</item>
-      <item name="other_field_to_sort" xsi:type="string">other_field</item>
-    </argument>
-  </arguments>
-</type>
-
-```
 
 ### Resolvers
 Implement 
@@ -118,3 +106,6 @@ http://<magento2-3-server>/graphql?XDEBUG_SESSION_START=PHPSTORM
 
 ## Tutorial 
 - Click [here](https://devdocs.magento.com/guides/v2.4/graphql/tutorials/checkout/index.html) 
+
+[Document]
+- [Detail](https://devdocs.magento.com/guides/v2.4/graphql/index.html)

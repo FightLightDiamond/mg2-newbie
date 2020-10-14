@@ -3,7 +3,7 @@
 namespace CuongPM\Training\Model\ResourceModel\Post;
 
 use CuongPM\Training\Model\Post;
-use CuongPM\Training\Model\ResourceModel\Post as PostResource;
+use CuongPM\Training\Model\ResourceModel\Post as PostResourceModel;
 
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {
@@ -11,6 +11,6 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
 
     protected function _construct()
     {
-        $this->_init(Post::class, PostResource::class);
+        $this->_init(Post::class, PostResourceModel::class);
     }
 }

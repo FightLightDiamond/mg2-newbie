@@ -7,12 +7,52 @@ type Query {
     "The testcustomer query returns information about a customer")
     @cache(cacheable: false)
 
-    getPost(
-        id: Int  @doc(description: "id of the customer")
-    ): Post
+    getPost(id: Int @doc(description: "id of the customer")): Post
     @resolver(class: "CuongPM\\GraphQLDev\\Model\\Resolver\\Post")
     @doc(description:
     "The getPost query returns information about a post")
+    @cache(cacheable: false)
+
+#    getPosts(
+#        filter: PostFilterInput @doc(description: "")
+#        pageSize: Int = 5
+#        @doc(description: "How many items should show on the page")
+#        currentPage: Int = 1
+#        @doc(description: "Allows to ussing paging it start with 1")
+#    ): PostsOutput
+#    @resolver(class: "\\CuongPM\\GraphQLDev\\Model\\Resolver\\Posts")
+#    @doc(description: "The Impelemention to resolve PickUp stores")
+}
+
+type Mutation {
+    createPost(input: PostInput!): PostOutput
+    @resolver(class: "\\CuongPM\\GraphQLDev\\Model\\Resolver\\CreatePost")
+    @doc(description: "The create new post")
+    @cache(cacheable: false)
+
+    storePost(
+        name: String!
+        status: Int!
+        content: String!
+    ): PostOutput
+    @resolver(class: "\\CuongPM\\GraphQLDev\\Model\\Resolver\\StorePost")
+    @doc(description: "The create new post")
+    @cache(cacheable: false)
+
+    updatePost(
+        id: Int!
+        name: String!
+        status: Int!
+        content: String!
+    ): PostOutput
+    @resolver(class: "CuongPM\\GraphQLDev\\Model\\Resolver\\UpdatePost")
+    @doc(description: "The update a post")
+    @cache(cacheable: false)
+
+    destroyPost(id: Int @doc(description: "id of the post")): PostOutput
+    @resolver(class: "CuongPM\\GraphQLDev\\Model\\Resolver\\DestroyPost")
+    @doc(description:
+    "The DestroyPost query returns information about a post")
     @cache(cacheable: false)
 }
 
@@ -28,4 +68,25 @@ type Post @doc(description: "Post by customer") {
     name: String
     status: Int
     content: String
+}
+
+type PostFilterInput @doc(description: "Input Post Filter for create") {
+    name: String
+    status: Int
+    content: String
+}
+
+type PostInput @doc(description: "Input Post for create") {
+    name: String
+    status: Int
+    content: String
+}
+
+type PostsOutput {
+    total_count: Int @doc(description: "")
+    items: [Post] @doc(description: "")
+}
+
+type PostOutput {
+    cuongpm_post: Post!
 }

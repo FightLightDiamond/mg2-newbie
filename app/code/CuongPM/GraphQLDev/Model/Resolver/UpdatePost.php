@@ -16,15 +16,15 @@ class UpdatePost implements ResolverInterface
     /**
      * @var \CuongPM\Training\Model\PostFactory
      */
-    private $factory;
+    protected $factory;
     /**
      * @var \CuongPM\Training\Model\ResourceModel\Post\CollectionFactory
      */
-    private $collectionFactory;
+    protected $collectionFactory;
     /**
      * @var ValueFactory
      */
-    private $valueFactory;
+    protected $valueFactory;
 
     public function __construct(
         ValueFactory $valueFactory,
@@ -64,10 +64,10 @@ class UpdatePost implements ResolverInterface
 
         try {
             $post = $this->factory->create()
-                ->load(3)
-                ->setName('43242')
-                ->setStatus(1)
-                ->setContent('fkjdfks')
+                ->load($args['id'])
+                ->setData('name', $args['name'])
+                ->setData('status', $args['status'])
+                ->setData('content', $args['content'])
                 ->save();
 
             $result = function () use ($post) {

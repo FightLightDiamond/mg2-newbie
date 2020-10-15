@@ -28,4 +28,13 @@ interface PostRepositoryInterface
      * @return \Magento\Framework\Api\SearchResultsInterface
      */
     public function getList(SearchCriteriaInterface $searchCriteria = null): SearchResultsInterface;
+
+    /**
+     * @param $id
+     * @param $name
+     * @param $status
+     * @param $content
+     * @return array
+     */
+    public function update($id, $name, $status, $content);
 }

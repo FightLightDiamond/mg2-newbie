@@ -9,23 +9,19 @@ type Query {
 
     getPost(id: Int @doc(description: "id of the customer")): Post
     @resolver(class: "CuongPM\\GraphQLDev\\Model\\Resolver\\Post")
-    @doc(description:
-    "The getPost query returns information about a post")
+    @doc(description:"The getPost query returns information about a post")
     @cache(cacheable: false)
 
-#    getPosts(
-#        filter: PostFilterInput @doc(description: "")
-#        pageSize: Int = 5
-#        @doc(description: "How many items should show on the page")
-#        currentPage: Int = 1
-#        @doc(description: "Allows to ussing paging it start with 1")
-#    ): PostsOutput
-#    @resolver(class: "\\CuongPM\\GraphQLDev\\Model\\Resolver\\Posts")
-#    @doc(description: "The Impelemention to resolve PickUp stores")
+    getPosts(
+        filter: getPostsFilterInput @doc(description: "PostFilterInput")
+        pageSize: Int @doc(description: "How many items should show on the page")
+        currentPage: Int @doc(description: "Allows to ussing paging it start with 1")
+    ): getPostsOutput @resolver(class: "CuongPM\\GraphQLDev\\Model\\Resolver\\Posts") @doc(description: "The Impelemention to resolve Posts")
+    @cache(cacheable: false)
 }
 
 type Mutation {
-    createPost(input: PostInput!): PostOutput
+    createPost(input: PostInput!): createPostOutput
     @resolver(class: "\\CuongPM\\GraphQLDev\\Model\\Resolver\\CreatePost")
     @doc(description: "The create new post")
     @cache(cacheable: false)
@@ -70,21 +66,25 @@ type Post @doc(description: "Post by customer") {
     content: String
 }
 
-type PostFilterInput @doc(description: "Input Post Filter for create") {
+input getPostsFilterInput @doc(description: "Input Post Filter for create") {
+    name: FilterTypeInput @doc(description: "Input name for Filter")
+    status: FilterTypeInput @doc(description: "Input status for Filter")
+    content: FilterTypeInput @doc(description: "Input content for Filter")
+}
+
+input PostInput @doc(description: "Input Post for create") {
     name: String
     status: Int
     content: String
 }
 
-type PostInput @doc(description: "Input Post for create") {
-    name: String
-    status: Int
-    content: String
+type getPostsOutput @doc(description: "Output Posts for querry"){
+    total_count: Int @doc(description: "total_count")
+    items: [Post] @doc(description: "items")
 }
 
-type PostsOutput {
-    total_count: Int @doc(description: "")
-    items: [Post] @doc(description: "")
+type createPostOutput {
+    cuongpm_post: Post!
 }
 
 type PostOutput {

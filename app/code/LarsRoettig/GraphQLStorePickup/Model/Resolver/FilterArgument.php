@@ -43,14 +43,28 @@ class FilterArgument implements FieldEntityAttributesInterface
      *
      * @return array
      */
+//    public function getEntityAttributes(): array
+//    {
+//        $fields = [];
+//        /** @var Field $field */
+//        foreach ($this->config->getConfigElement('PickUpStore')->getFields() as $field) {
+//            $fields[$field->getName()] = 'String';
+//        }
+//
+//        return array_keys($fields);
+//    }
+
     public function getEntityAttributes(): array
     {
         $fields = [];
         /** @var Field $field */
         foreach ($this->config->getConfigElement('PickUpStore')->getFields() as $field) {
-            $fields[$field->getName()] = 'String';
+            $fields[$field->getName()] = [
+                'type' => 'String',
+                'fieldName' => $field->getName(),
+            ];
         }
 
-        return array_keys($fields);
+        return $fields;
     }
 }

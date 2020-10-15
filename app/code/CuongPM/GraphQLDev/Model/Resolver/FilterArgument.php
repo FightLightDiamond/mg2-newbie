@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace CuongPM\GraphQLDev\Model\Resolver;
 
@@ -11,17 +12,28 @@ class FilterArgument implements FieldEntityAttributesInterface
 {
     /** @var ConfigInterface */
     private $config;
+
     public function __construct(ConfigInterface $config)
     {
         $this->config = $config;
     }
+
+    /**
+     * Get the attributes for an entity
+     *
+     * @return array
+     */
     public function getEntityAttributes(): array
     {
         $fields = [];
         /** @var Field $field */
         foreach ($this->config->getConfigElement('Post')->getFields() as $field) {
-            $fields[$field->getName()] = '';
+            $fields[$field->getName()] = [
+                'type' => 'String',
+                'fieldName' => $field->getName(),
+            ];
         }
-        return array_keys($fields);
+
+        return $fields;
     }
 }

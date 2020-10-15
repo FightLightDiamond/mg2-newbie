@@ -11,20 +11,11 @@ use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 
 class Posts implements ResolverInterface
 {
-    /**
-     * @var GetListInterface
-     */
+
     private $postRepository;
-    /**
-     * @var SearchCriteriaBuilder
-     */
+
     private $searchCriteriaBuilder;
 
-    /**
-     * PickUpPostsList constructor.
-     * @param GetList $postRepository
-     * @param SearchCriteriaBuilder $searchCriteriaBuilder
-     */
     public function __construct(PostRepositoryInterface $postRepository, SearchCriteriaBuilder $searchCriteriaBuilder)
     {
         $this->postRepository = $postRepository;
@@ -37,7 +28,7 @@ class Posts implements ResolverInterface
     public function resolve(Field $field, $context, ResolveInfo $info, array $value = null, array $args = null)
     {
         $this->vaildateArgs($args);
-        $searchCriteria = $this->searchCriteriaBuilder->build('cuongpm_posts', $args);
+        $searchCriteria = $this->searchCriteriaBuilder->build('Post', $args);
         $searchCriteria->setCurrentPage($args['currentPage']);
         $searchCriteria->setPageSize($args['pageSize']);
         $searchResult = $this->postRepository->getList($searchCriteria);
@@ -46,6 +37,10 @@ class Posts implements ResolverInterface
             'total_count' => $searchResult->getTotalCount(),
             'items' => $searchResult->getItems(),
         ];
+//        return [
+//            'total_count' => 2,
+//            'items' => [],
+//        ];
     }
 
     /**

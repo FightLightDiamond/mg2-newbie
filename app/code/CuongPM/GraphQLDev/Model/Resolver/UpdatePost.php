@@ -2,6 +2,7 @@
 
 namespace CuongPM\GraphQLDev\Model\Resolver;
 
+use CuongPM\Training\Api\PostRepositoryInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\GraphQl\Config\Element\Field;
@@ -13,6 +14,10 @@ use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 
 class UpdatePost implements ResolverInterface
 {
+    /**
+     * @var
+     */
+    protected $repository;
     /**
      * @var \CuongPM\Training\Model\PostFactory
      */
@@ -27,10 +32,12 @@ class UpdatePost implements ResolverInterface
     protected $valueFactory;
 
     public function __construct(
+        PostRepositoryInterface $repository,
         ValueFactory $valueFactory,
         \CuongPM\Training\Model\PostFactory $factory,
         \CuongPM\Training\Model\ResourceModel\Post\CollectionFactory $collectionFactory
     ) {
+        $this->repository = $repository;
         $this->factory = $factory;
         $this->collectionFactory = $collectionFactory;
         $this->valueFactory = $valueFactory;
@@ -63,12 +70,14 @@ class UpdatePost implements ResolverInterface
         }
 
         try {
-            $post = $this->factory->create()
-                ->load($args['id'])
-                ->setData('name', $args['name'])
-                ->setData('status', $args['status'])
-                ->setData('content', $args['content'])
-                ->save();
+            $post = $this->repository
+                ->update($args['id'], $args['name'], $args['status'], $args['content']);
+//            $post = $this->factory->create()
+//                ->load($args['id'])
+//                ->setData('name', $args['name'])
+//                ->setData('status', $args['status'])
+//                ->setData('content', $args['content'])
+//                ->save();
 
             $result = function () use ($post) {
                 return !empty($post) ? $post->toArray() : [];

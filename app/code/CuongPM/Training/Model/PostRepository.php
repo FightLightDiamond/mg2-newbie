@@ -1,12 +1,11 @@
 <?php
 
-
 namespace CuongPM\Training\Model;
 
 use CuongPM\Training\Api\Data\PostInterface;
 use CuongPM\Training\Api\PostRepositoryInterface;
 use CuongPM\Training\Model\ResourceModel\Post as PostResourceModel;
-use \CuongPM\Training\Model\ResourceModel\Post\CollectionFactory;
+use CuongPM\Training\Model\ResourceModel\Post\CollectionFactory;
 use Magento\Framework\Api\Search\SearchCriteriaBuilder;
 use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
 use Magento\Framework\Api\SearchCriteriaInterface;
@@ -14,13 +13,12 @@ use Magento\Framework\Api\SearchResultsInterface;
 use Magento\Framework\Api\SearchResultsInterfaceFactory;
 use Magento\Framework\Exception\CouldNotSaveException;
 
-
 class PostRepository implements PostRepositoryInterface
 {
     /**
      * @var PostFactory
      */
-    private $factory;
+    protected $factory;
     /**
      * @var CollectionFactory
      */
@@ -92,13 +90,21 @@ class PostRepository implements PostRepositoryInterface
         }
     }
 
+    /**
+     * @param $id
+     * @param $name
+     * @param $status
+     * @param $content
+     * @return array
+     */
     public function update($id, $name, $status, $content)
     {
-        return $this->factory->create()
-            ->load($id)
-            ->setName($name)
+        $post = $this->factory->create()
+            ->load($id);
+
+        return $post->setName($name)
             ->setStatus($status)
             ->setContent($content)
-            ->save()->toArray();
+            ->save();
     }
 }

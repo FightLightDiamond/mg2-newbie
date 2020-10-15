@@ -12,20 +12,13 @@ use Magento\Framework\Api\SearchResultsInterface;
 interface PostRepositoryInterface
 {
     /**
-     * Save the Store data.
-     *
-     * @param \Magento\InventoryApi\Api\Data\SourceInterface $source
-     * @return void
-     * @throws \Magento\Framework\Exception\CouldNotSaveException
+     * @param PostInterface $store
      */
     public function save(PostInterface $store): void;
 
     /**
-     * Find Stores by given SearchCriteria
-     * SearchCriteria is not required because load all stores is useful case
-     *
-     * @param \Magento\Framework\Api\SearchCriteriaInterface|null $searchCriteria
-     * @return \Magento\Framework\Api\SearchResultsInterface
+     * @param SearchCriteriaInterface|null $searchCriteria
+     * @return SearchResultsInterface
      */
     public function getList(SearchCriteriaInterface $searchCriteria = null): SearchResultsInterface;
 

@@ -4,6 +4,5 @@
         <plugin name="cuongpm_training_update_product_name" type="CuongPM\Training\Plugin\UpdateProduct" />
     </type>
     <preference for="CuongPM\Training\Api\PostManagementInterface" type="CuongPM\Training\Model\PostManagement"/>
-    <preference for="CuongPM\Training\Api\Data\PostInterface" type="CuongPM\Training\Model\Post"/>
     <preference for="CuongPM\Training\Api\PostRepositoryInterface" type="\CuongPM\Training\Model\PostRepository"/>
 </config>

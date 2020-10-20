@@ -1,0 +1,31 @@
+type Query {
+    physicalStores (
+        filter: PhysicalStoresFilterInput @doc(description: "Query by filter."),
+        pageSize: Int @doc(description: "Query by  pageSize."),
+        currentPage: Int @doc(description: "Query by  currentPage.")
+    ): PhysicalStoresOutput @resolver( class: "Casio\\PhysicalStore\\Model\\Resolver\\PhysicalStores")
+    @cache( cacheable: false)
+}
+
+type PhysicalStore {
+    physicalstore_id : Int  @doc(description: "Query by physicalstore_id.")
+    name: String  @doc(description: "Query by name.")
+    code: String  @doc(description: "Query by code.")
+    opening_time: String  @doc(description: "Query by opening_time.")
+    phone_number: String  @doc(description: "Query by phone_number.")
+    regular_holiday: String  @doc(description: "Query by regular_holiday.")
+}
+
+input PhysicalStoresFilterInput {
+    name: FilterTypeInput  @doc(description: "")
+    code: FilterTypeInput @doc(description: ""),
+    opening_time: FilterTypeInput @doc(description: ""),
+    phone_number: FilterTypeInput @doc(description: ""),
+    regular_holiday: FilterTypeInput @doc(description: "")
+    or: PhysicalStoresFilterInput
+}
+
+type PhysicalStoresOutput {
+    total_count:  Int @doc(description: "")
+    items: [PhysicalStore] @doc(description: "")
+}

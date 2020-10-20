@@ -37,10 +37,6 @@ class Posts implements ResolverInterface
             'total_count' => $searchResult->getTotalCount(),
             'items' => $searchResult->getItems(),
         ];
-//        return [
-//            'total_count' => 2,
-//            'items' => [],
-//        ];
     }
 
     /**

@@ -68,10 +68,12 @@ class PickUpStores implements ResolverInterface
         $searchCriteria->setPageSize($args['pageSize']);
         $searchResult = $this->storeRepository->getList($searchCriteria);
 
-        return [
+        $data =  [
             'total_count' => $searchResult->getTotalCount(),
             'items' => $searchResult->getItems(),
         ];
+
+        return $data;
     }
 
     /**

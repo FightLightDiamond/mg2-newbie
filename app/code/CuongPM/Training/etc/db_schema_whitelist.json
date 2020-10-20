@@ -1,0 +1,17 @@
+{
+    "cuongpm_posts": {
+        "column": {
+            "id": true,
+            "name": true,
+            "status": true,
+            "content": true,
+            "created_at": true
+        },
+        "index": {
+            "CUONGPM_POSTS_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

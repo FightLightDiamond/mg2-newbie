@@ -4,4 +4,5 @@ keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
 subjectAltName = @alt_names
 
 [alt_names]
-DNS.1 = mage.to.vn
+DNS.1 = casio.common
+DNS.2 = casio.common

@@ -1,0 +1,37 @@
+type Query {
+    shops (
+        filter: ShopsFilterInput @doc(description: "Query by filter."),
+        pageSize: Int @doc(description: "Query by  pageSize."),
+        currentPage: Int @doc(description: "Query by  currentPage.")
+    ): Shops @resolver( class: "Casio\\Shop\\Model\\Resolver\\Shops")
+    @cache(cacheable: false)
+
+    shop (
+        shop_code: String @doc(description: "Query by code.")
+    ): Shop @resolver( class: "Casio\\Shop\\Model\\Resolver\\Shop")
+}
+
+input ShopsFilterInput {
+    shop_name: FilterTypeInput  @doc(description: "Filter for name")
+    shop_code: FilterTypeInput @doc(description: "Filter for code"),
+    shop_tel: FilterTypeInput @doc(description: "Filter for number phone"),
+    shop_business_hours: FilterTypeInput @doc(description: "Filter for opening time")
+    shop_holidays: FilterTypeInput @doc(description: "Filter for regular holiday")
+    source_code: FilterTypeInput @doc(description: "Filter for source code")
+    or: ShopsFilterInput
+}
+
+type Shops {
+    total_count: Int @doc(description: "total_count")
+    items: [Shop] @doc(description: "items")
+}
+
+type Shop {
+    shop_id: String  @doc(description: "Query by id.")
+    shop_name: String  @doc(description: "Query by  shop_name.")
+    shop_code: String  @doc(description: "Query by  shop_code.")
+    shop_tel: String  @doc(description: "Query by  shop_tel.")
+    shop_business_hours: String  @doc(description: "Query by  shop_business_hours.")
+    shop_holidays: String  @doc(description: "Query by   shop_holidays.")
+    source_code: String  @doc(description: "Query by  source_code.")
+}

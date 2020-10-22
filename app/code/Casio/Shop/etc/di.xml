@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Casio\Shop\Api\ShopRepositoryInterface" type="Casio\Shop\Model\ShopRepository"/>
+	<preference for="Casio\Shop\Api\Data\ShopInterface" type="Casio\Shop\Model\Data\Shop"/>
+	<preference for="Casio\Shop\Api\Data\ShopSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Casio\Shop\Model\ResourceModel\Shop\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">casio_shop_shop</argument>
+			<argument name="resourceModel" xsi:type="string">Casio\Shop\Model\ResourceModel\Shop\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="casio_shop_shop_listing_data_source" xsi:type="string">Casio\Shop\Model\ResourceModel\Shop\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+    <type name="Magento\Framework\GraphQl\Query\Resolver\Argument\FieldEntityAttributesPool">
+        <arguments>
+            <argument name="attributesInstances" xsi:type="array">
+                <item name="Shop" xsi:type="object">
+                    \Casio\Shop\Model\Resolver\FilterArgument
+                </item>
+            </argument>
+        </arguments>
+    </type>
+</config>

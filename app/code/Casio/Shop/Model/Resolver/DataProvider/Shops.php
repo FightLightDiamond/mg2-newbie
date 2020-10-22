@@ -5,24 +5,22 @@
  */
 declare(strict_types=1);
 
-namespace Casio\PhysicalStore\Model\Resolver;
+namespace Casio\Shop\Model\Resolver\DataProvider;
 
-use Casio\PhysicalStore\Api\PhysicalStoreRepositoryInterface;
-use Magento\Framework\GraphQl\Config\Element\Field;
+
+use Casio\Shop\Api\ShopRepositoryInterface;
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
 use Magento\Framework\GraphQl\Query\Resolver\Argument\SearchCriteria\Builder as SearchCriteriaBuilder;
-use Magento\Framework\GraphQl\Query\ResolverInterface;
-use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 
-class PhysicalStores implements ResolverInterface
+class Shops
 {
-    private $postRepository;
+    private $repository;
 
     private $searchCriteriaBuilder;
 
-    public function __construct(PhysicalStoreRepositoryInterface $postRepository, SearchCriteriaBuilder $searchCriteriaBuilder)
+    public function __construct(ShopRepositoryInterface $repository, SearchCriteriaBuilder $searchCriteriaBuilder)
     {
-        $this->postRepository = $postRepository;
+        $this->repository = $repository;
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;
     }
 
@@ -40,22 +38,14 @@ class PhysicalStores implements ResolverInterface
         }
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function resolve(
-        Field $field,
-        $context,
-        ResolveInfo $info,
-        array $value = null,
-        array $args = null
-    ) {
+    public function getShops($args)
+    {
         $this->validateArgs($args);
 
-        $searchCriteria = $this->searchCriteriaBuilder->build('PhysicalStore', $args);
+        $searchCriteria = $this->searchCriteriaBuilder->build('Shop', $args);
         $searchCriteria->setCurrentPage($args['currentPage']);
         $searchCriteria->setPageSize($args['pageSize']);
-        $searchResult = $this->postRepository->getList($searchCriteria);
+        $searchResult = $this->repository->getList($searchCriteria);
 
         return [
             'total_count' => $searchResult->getTotalCount(),
@@ -63,3 +53,4 @@ class PhysicalStores implements ResolverInterface
         ];
     }
 }
+

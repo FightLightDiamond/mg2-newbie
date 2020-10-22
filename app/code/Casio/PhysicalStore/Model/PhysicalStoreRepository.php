@@ -15,7 +15,9 @@ use Casio\PhysicalStore\Model\ResourceModel\PhysicalStore\CollectionFactory as P
 use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\Api\ExtensibleDataObjectConverter;
 use Magento\Framework\Api\ExtensionAttribute\JoinProcessorInterface;
+use Magento\Framework\Api\Search\SearchCriteriaBuilder;
 use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
+use Magento\Framework\Api\SearchResultsInterfaceFactory;
 use Magento\Framework\Exception\CouldNotDeleteException;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
@@ -44,8 +46,11 @@ class PhysicalStoreRepository implements PhysicalStoreRepositoryInterface
     protected $extensionAttributesJoinProcessor;
 
     protected $dataObjectHelper;
+    protected $searchCriteriaBuilder;
+    protected $searchResultsInterfaceFactory;
 
     /**
+     * @param SearchCriteriaBuilder $searchCriteriaBuilder
      * @param ResourcePhysicalStore $resource
      * @param PhysicalStoreFactory $physicalStoreFactory
      * @param PhysicalStoreInterfaceFactory $dataPhysicalStoreFactory
@@ -59,6 +64,8 @@ class PhysicalStoreRepository implements PhysicalStoreRepositoryInterface
      * @param ExtensibleDataObjectConverter $extensibleDataObjectConverter
      */
     public function __construct(
+        SearchCriteriaBuilder $searchCriteriaBuilder,
+        SearchResultsInterfaceFactory $searchResultsInterfaceFactory,
         ResourcePhysicalStore $resource,
         PhysicalStoreFactory $physicalStoreFactory,
         PhysicalStoreInterfaceFactory $dataPhysicalStoreFactory,
@@ -71,6 +78,8 @@ class PhysicalStoreRepository implements PhysicalStoreRepositoryInterface
         JoinProcessorInterface $extensionAttributesJoinProcessor,
         ExtensibleDataObjectConverter $extensibleDataObjectConverter
     ) {
+        $this->searchCriteriaBuilder = $searchCriteriaBuilder;
+        $this->searchResultsInterfaceFactory = $searchResultsInterfaceFactory;
         $this->resource = $resource;
         $this->physicalStoreFactory = $physicalStoreFactory;
         $this->physicalStoreCollectionFactory = $physicalStoreCollectionFactory;
@@ -130,31 +139,41 @@ class PhysicalStoreRepository implements PhysicalStoreRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function getList(
-        \Magento\Framework\Api\SearchCriteriaInterface $criteria
-    ) {
+    public function getList(\Magento\Framework\Api\SearchCriteriaInterface $criteria)
+    {
         $collection = $this->physicalStoreCollectionFactory->create();
 
-        $this->extensionAttributesJoinProcessor->process(
-            $collection,
-            \Casio\PhysicalStore\Api\Data\PhysicalStoreInterface::class
-        );
+        $this->extensionAttributesJoinProcessor->process($collection, \Casio\PhysicalStore\Api\Data\PhysicalStoreInterface::class);
+
+        /*     if (null === $criteria) {
+                 $criteria = $this->searchCriteriaBuilder->create();
+             } else {
+                 $this->collectionProcessor->process($criteria, $collection);
+             }*/
 
         $this->collectionProcessor->process($criteria, $collection);
 
         $searchResults = $this->searchResultsFactory->create();
         $searchResults->setSearchCriteria($criteria);
 
-        $items = [];
-        foreach ($collection as $model) {
-            $id = $model->getPhysicalstoreId();
-            $name = $model->getName();
-            $items[] = $model->getDataModel();
-        }
+//        $items = [];
+//        foreach ($collection as $model) {
+//            $id = $model->getPhysicalstoreId();
+//            $name = $model->getName();
+//            $items[] = $model->getDataModel();
+//        }
 
-        $searchResults->setItems($items);
+        $searchResults->setItems($collection->getItems());
         $searchResults->setTotalCount($collection->getSize());
+
         return $searchResults;
+
+//        $searchResult = $this->searchResultsInterfaceFactory->create();
+//        $searchResult->setItems($collection->getItems());
+//        $searchResult->setTotalCount($collection->getSize());
+//        $searchResult->setSearchCriteria($criteria);
+//
+//        return $searchResult;
     }
 
     /**

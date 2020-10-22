@@ -2,31 +2,31 @@
 <listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
 	<argument name="data" xsi:type="array">
 		<item name="js_config" xsi:type="array">
-			<item name="provider" xsi:type="string">casio_physicalstore_physicalstore_listing.casio_physicalstore_physicalstore_listing_data_source</item>
+			<item name="provider" xsi:type="string">casio_shop_shop_listing.casio_shop_shop_listing_data_source</item>
 		</item>
 	</argument>
 	<settings>
-		<spinner>casio_physicalstore_physicalstore_columns</spinner>
+		<spinner>casio_shop_shop_columns</spinner>
 		<deps>
-			<dep>casio_physicalstore_physicalstore_listing.casio_physicalstore_physicalstore_listing_data_source</dep>
+			<dep>casio_shop_shop_listing.casio_shop_shop_listing_data_source</dep>
 		</deps>
 		<buttons>
 			<button name="add">
 				<url path="*/*/new"/>
 				<class>primary</class>
-				<label translate="true">Add new PhysicalStore</label>
+				<label translate="true">Add new Shop</label>
 			</button>
 		</buttons>
 	</settings>
-	<dataSource component="Magento_Ui/js/grid/provider" name="casio_physicalstore_physicalstore_listing_data_source">
+	<dataSource component="Magento_Ui/js/grid/provider" name="casio_shop_shop_listing_data_source">
 		<settings>
 			<updateUrl path="mui/index/render"/>
 		</settings>
-		<aclResource>Casio_PhysicalStore::PhysicalStore</aclResource>
-		<dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="casio_physicalstore_physicalstore_listing_data_source">
+		<aclResource>Casio_Shop::Shop</aclResource>
+		<dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="casio_shop_shop_listing_data_source">
 			<settings>
 				<requestFieldName>id</requestFieldName>
-				<primaryFieldName>physicalstore_id</primaryFieldName>
+				<primaryFieldName>shop_id</primaryFieldName>
 			</settings>
 		</dataProvider>
 	</dataSource>
@@ -39,20 +39,20 @@
 		<filters name="listing_filters"/>
 		<paging name="listing_paging"/>
 	</listingToolbar>
-	<columns name="casio_physicalstore_physicalstore_columns">
+	<columns name="casio_shop_shop_columns">
 		<settings>
 			<editorConfig>
-				<param name="selectProvider" xsi:type="string">casio_physicalstore_physicalstore_listing.casio_physicalstore_physicalstore_listing.casio_physicalstore_physicalstore_columns.ids</param>
+				<param name="selectProvider" xsi:type="string">casio_shop_shop_listing.casio_shop_shop_listing.casio_shop_shop_columns.ids</param>
 				<param name="enabled" xsi:type="boolean">true</param>
-				<param name="indexField" xsi:type="string">physicalstore_id</param>
+				<param name="indexField" xsi:type="string">shop_id</param>
 				<param name="clientConfig" xsi:type="array">
-					<item name="saveUrl" path="casio_physicalstore/PhysicalStore/inlineEdit" xsi:type="url"/>
+					<item name="saveUrl" path="casio_shop/Shop/inlineEdit" xsi:type="url"/>
 					<item name="validateBeforeSave" xsi:type="boolean">false</item>
 				</param>
 			</editorConfig>
 			<childDefaults>
 				<param name="fieldAction" xsi:type="array">
-					<item name="provider" xsi:type="string">casio_physicalstore_physicalstore_listing.casio_physicalstore_physicalstore_listing.casio_physicalstore_physicalstore_columns_editor</item>
+					<item name="provider" xsi:type="string">casio_shop_shop_listing.casio_shop_shop_listing.casio_shop_shop_columns_editor</item>
 					<item name="target" xsi:type="string">startEdit</item>
 					<item name="params" xsi:type="array">
 						<item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
@@ -63,20 +63,20 @@
 		</settings>
 		<selectionsColumn name="ids">
 			<settings>
-				<indexField>physicalstore_id</indexField>
+				<indexField>shop_id</indexField>
 			</settings>
 		</selectionsColumn>
-		<column name="physicalstore_id">
+		<column name="shop_id">
 			<settings>
 				<filter>text</filter>
 				<sorting>asc</sorting>
 				<label translate="true">ID</label>
 			</settings>
 		</column>
-		    <column name="name">
+		<column name="shop_name">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">Name</label>
+				<label translate="true">shop_name</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -85,10 +85,17 @@
 				</editor>
 			</settings>
 		</column>
-		<column name="code">
+		<actionsColumn class="Casio\Shop\Ui\Component\Listing\Column\ShopActions" name="actions">
+			<settings>
+				<indexField>shop_id</indexField>
+				<resizeEnabled>false</resizeEnabled>
+				<resizeDefaultWidth>107</resizeDefaultWidth>
+			</settings>
+		</actionsColumn>
+		<column name="shop_code">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">Code</label>
+				<label translate="true">shop_code</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -97,10 +104,10 @@
 				</editor>
 			</settings>
 		</column>
-		<column name="opening_time">
+		<column name="shop_tel">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">Opening time</label>
+				<label translate="true">shop_tel</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -109,10 +116,10 @@
 				</editor>
 			</settings>
 		</column>
-		<column name="phone_number">
+		<column name="shop_business_hours">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">Phone number</label>
+				<label translate="true">shop_business_hours</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -121,10 +128,10 @@
 				</editor>
 			</settings>
 		</column>
-		<column name="regular_holiday">
+		<column name="shop_holidays">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">Regular holiday</label>
+				<label translate="true">shop_holidays</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -133,12 +140,17 @@
 				</editor>
 			</settings>
 		</column>
-        <actionsColumn class="Casio\PhysicalStore\Ui\Component\Listing\Column\PhysicalStoreActions" name="actions">
-            <settings>
-                <indexField>physicalstore_id</indexField>
-                <resizeEnabled>false</resizeEnabled>
-                <resizeDefaultWidth>107</resizeDefaultWidth>
-            </settings>
-        </actionsColumn>
+		<column name="source_code">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">source_code</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
 	</columns>
 </listing>

@@ -34,7 +34,7 @@ class PostRepository implements PostRepositoryInterface
     /**
      * @var SearchResultsInterfaceFactory
      */
-    private $postSearchResultsInterfaceFactory;
+    private $searchResultsInterfaceFactory;
     /**
      * @var PostResourceModel
      */
@@ -45,14 +45,14 @@ class PostRepository implements PostRepositoryInterface
         CollectionFactory $postCollectionFactory,
         CollectionProcessorInterface $collectionProcessor,
         SearchCriteriaBuilder $searchCriteriaBuilder,
-        SearchResultsInterfaceFactory $postSearchResultsInterfaceFactory,
+        SearchResultsInterfaceFactory $searchResultsInterfaceFactory,
         PostResourceModel $postResourceModel
     ) {
         $this->factory = $factory;
         $this->postCollectionFactory = $postCollectionFactory;
         $this->collectionProcessor = $collectionProcessor;
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;
-        $this->postSearchResultsInterfaceFactory = $postSearchResultsInterfaceFactory;
+        $this->searchResultsInterfaceFactory = $searchResultsInterfaceFactory;
         $this->postResourceModel = $postResourceModel;
     }
 
@@ -70,7 +70,7 @@ class PostRepository implements PostRepositoryInterface
             $this->collectionProcessor->process($searchCriteria, $postCollection);
         }
 
-        $searchResult = $this->postSearchResultsInterfaceFactory->create();
+        $searchResult = $this->searchResultsInterfaceFactory->create();
         $searchResult->setItems($postCollection->getItems());
         $searchResult->setTotalCount($postCollection->getSize());
         $searchResult->setSearchCriteria($searchCriteria);

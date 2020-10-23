@@ -13,7 +13,6 @@ use Magento\Framework\Api\DataObjectHelper;
 
 class Shop extends \Magento\Framework\Model\AbstractModel
 {
-
     protected $shopDataFactory;
 
     protected $dataObjectHelper;
@@ -50,15 +49,14 @@ class Shop extends \Magento\Framework\Model\AbstractModel
     public function getDataModel()
     {
         $shopData = $this->getData();
-        
+
         $shopDataObject = $this->shopDataFactory->create();
         $this->dataObjectHelper->populateWithArray(
             $shopDataObject,
             $shopData,
             ShopInterface::class
         );
-        
+
         return $shopDataObject;
     }
 }
-

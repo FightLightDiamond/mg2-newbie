@@ -9,7 +9,6 @@ namespace Casio\Shop\Controller\Adminhtml\Shop;
 
 class Index extends \Magento\Backend\App\Action
 {
-
     protected $resultPageFactory;
 
     /**
@@ -34,8 +33,7 @@ class Index extends \Magento\Backend\App\Action
     public function execute()
     {
         $resultPage = $this->resultPageFactory->create();
-            $resultPage->getConfig()->getTitle()->prepend(__("Shop"));
-            return $resultPage;
+        $resultPage->getConfig()->getTitle()->prepend(__("Shop"));
+        return $resultPage;
     }
 }
-

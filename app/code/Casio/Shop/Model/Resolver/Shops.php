@@ -28,6 +28,20 @@ class Shops implements ResolverInterface
     }
 
     /**
+     * @param array $args
+     * @throws GraphQlInputException
+     */
+    private function validateArgs(array $args): void
+    {
+        if (isset($args['currentPage']) && $args['currentPage'] < 1) {
+            throw new GraphQlInputException(__('currentPage value must be greater than 0.'));
+        }
+        if (isset($args['pageSize']) && $args['pageSize'] < 1) {
+            throw new GraphQlInputException(__('pageSize value must be greater than 0.'));
+        }
+    }
+
+    /**
      * @inheritdoc
      */
     public function resolve(
@@ -37,6 +51,8 @@ class Shops implements ResolverInterface
         array $value = null,
         array $args = null
     ) {
+        $this->validateArgs($args);
+
         return $this->shopsDataProvider->getShops($args);
     }
 }

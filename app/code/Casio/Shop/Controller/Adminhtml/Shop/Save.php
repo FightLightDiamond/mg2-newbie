@@ -11,7 +11,6 @@ use Magento\Framework\Exception\LocalizedException;
 
 class Save extends \Magento\Backend\App\Action
 {
-
     protected $dataPersistor;
 
     /**
@@ -29,7 +28,7 @@ class Save extends \Magento\Backend\App\Action
     /**
      * Save action
      *
-     * @return \Magento\Framework\Controller\ResultInterface
+     * @return \Magento\Backend\Model\View\Result\Redirect
      */
     public function execute()
     {
@@ -38,20 +37,20 @@ class Save extends \Magento\Backend\App\Action
         $data = $this->getRequest()->getPostValue();
         if ($data) {
             $id = $this->getRequest()->getParam('shop_id');
-        
+
             $model = $this->_objectManager->create(\Casio\Shop\Model\Shop::class)->load($id);
             if (!$model->getId() && $id) {
                 $this->messageManager->addErrorMessage(__('This Shop no longer exists.'));
                 return $resultRedirect->setPath('*/*/');
             }
-        
+
             $model->setData($data);
-        
+
             try {
                 $model->save();
                 $this->messageManager->addSuccessMessage(__('You saved the Shop.'));
                 $this->dataPersistor->clear('casio_shop_shop');
-        
+
                 if ($this->getRequest()->getParam('back')) {
                     return $resultRedirect->setPath('*/*/edit', ['shop_id' => $model->getId()]);
                 }
@@ -61,11 +60,10 @@ class Save extends \Magento\Backend\App\Action
             } catch (\Exception $e) {
                 $this->messageManager->addExceptionMessage($e, __('Something went wrong while saving the Shop.'));
             }
-        
+
             $this->dataPersistor->set('casio_shop_shop', $data);
             return $resultRedirect->setPath('*/*/edit', ['shop_id' => $this->getRequest()->getParam('shop_id')]);
         }
         return $resultRedirect->setPath('*/*/');
     }
 }
-

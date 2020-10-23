@@ -9,7 +9,6 @@ namespace Casio\Shop\Controller\Adminhtml\Shop;
 
 class InlineEdit extends \Magento\Backend\App\Action
 {
-
     protected $jsonFactory;
 
     /**
@@ -27,7 +26,7 @@ class InlineEdit extends \Magento\Backend\App\Action
     /**
      * Inline edit action
      *
-     * @return \Magento\Framework\Controller\ResultInterface
+     * @return \Magento\Framework\Controller\Result\Json
      */
     public function execute()
     {
@@ -35,7 +34,7 @@ class InlineEdit extends \Magento\Backend\App\Action
         $resultJson = $this->jsonFactory->create();
         $error = false;
         $messages = [];
-        
+
         if ($this->getRequest()->getParam('isAjax')) {
             $postItems = $this->getRequest()->getParam('items', []);
             if (!count($postItems)) {
@@ -55,11 +54,10 @@ class InlineEdit extends \Magento\Backend\App\Action
                 }
             }
         }
-        
+
         return $resultJson->setData([
             'messages' => $messages,
             'error' => $error
         ]);
     }
 }
-

@@ -9,7 +9,6 @@ namespace Casio\Shop\Controller\Adminhtml\Shop;
 
 class Edit extends \Casio\Shop\Controller\Adminhtml\Shop
 {
-
     protected $resultPageFactory;
 
     /**
@@ -36,7 +35,7 @@ class Edit extends \Casio\Shop\Controller\Adminhtml\Shop
         // 1. Get ID and create model
         $id = $this->getRequest()->getParam('shop_id');
         $model = $this->_objectManager->create(\Casio\Shop\Model\Shop::class);
-        
+
         // 2. Initial checking
         if ($id) {
             $model->load($id);
@@ -48,7 +47,7 @@ class Edit extends \Casio\Shop\Controller\Adminhtml\Shop
             }
         }
         $this->_coreRegistry->register('casio_shop_shop', $model);
-        
+
         // 3. Build edit form
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
@@ -61,4 +60,3 @@ class Edit extends \Casio\Shop\Controller\Adminhtml\Shop
         return $resultPage;
     }
 }
-

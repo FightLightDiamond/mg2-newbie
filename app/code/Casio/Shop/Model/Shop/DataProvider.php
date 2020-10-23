@@ -12,12 +12,10 @@ use Magento\Framework\App\Request\DataPersistorInterface;
 
 class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
 {
-
     protected $collection;
 
     protected $loadedData;
     protected $dataPersistor;
-
 
     /**
      * Constructor
@@ -59,15 +57,14 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
             $this->loadedData[$model->getId()] = $model->getData();
         }
         $data = $this->dataPersistor->get('casio_shop_shop');
-        
+
         if (!empty($data)) {
             $model = $this->collection->getNewEmptyItem();
             $model->setData($data);
             $this->loadedData[$model->getId()] = $model->getData();
             $this->dataPersistor->clear('casio_shop_shop');
         }
-        
+
         return $this->loadedData;
     }
 }
-

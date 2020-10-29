@@ -2,7 +2,7 @@
 <form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
 	<argument name="data" xsi:type="array">
 		<item name="js_config" xsi:type="array">
-			<item name="provider" xsi:type="string">casio_shop_shop_form.shop_form_data_source</item>
+			<item name="provider" xsi:type="string">casio_shop_form.shop_form_data_source</item>
 		</item>
 		<item name="label" translate="true" xsi:type="string">General Information</item>
 		<item name="template" xsi:type="string">templates/form/collapsible</item>
@@ -14,10 +14,10 @@
 			<button class="Casio\Shop\Block\Adminhtml\Shop\Edit\SaveButton" name="save"/>
 			<button class="Casio\Shop\Block\Adminhtml\Shop\Edit\SaveAndContinueButton" name="save_and_continue"/>
 		</buttons>
-		<namespace>casio_shop_shop_form</namespace>
+		<namespace>casio_shop_form</namespace>
 		<dataScope>data</dataScope>
 		<deps>
-			<dep>casio_shop_shop_form.shop_form_data_source</dep>
+			<dep>casio_shop_form.shop_form_data_source</dep>
 		</deps>
 	</settings>
 	<dataSource name="shop_form_data_source">
@@ -40,7 +40,7 @@
 		<settings>
 			<label>General</label>
 		</settings>
-		<field formElement="input" name="shop_name" sortOrder="10">
+		<field formElement="input" name="name" sortOrder="10">
 			<argument name="data" xsi:type="array">
 				<item name="config" xsi:type="array">
 					<item name="source" xsi:type="string">Shop</item>
@@ -48,14 +48,14 @@
 			</argument>
 			<settings>
 				<dataType>text</dataType>
-				<label translate="true">shop_name</label>
-				<dataScope>shop_name</dataScope>
+				<label translate="true">Name</label>
+				<dataScope>name</dataScope>
 				<validation>
 					<rule name="required-entry" xsi:type="boolean">false</rule>
 				</validation>
 			</settings>
 		</field>
-		<field formElement="input" name="shop_code" sortOrder="20">
+		<field formElement="input" name="code" sortOrder="20">
 			<argument name="data" xsi:type="array">
 				<item name="config" xsi:type="array">
 					<item name="source" xsi:type="string">Shop</item>
@@ -63,14 +63,14 @@
 			</argument>
 			<settings>
 				<dataType>text</dataType>
-				<label translate="true">shop_code</label>
-				<dataScope>shop_code</dataScope>
+				<label translate="true">Code</label>
+				<dataScope>code</dataScope>
 				<validation>
 					<rule name="required-entry" xsi:type="boolean">false</rule>
 				</validation>
 			</settings>
 		</field>
-		<field formElement="input" name="shop_tel" sortOrder="30">
+		<field formElement="input" name="tel" sortOrder="30">
 			<argument name="data" xsi:type="array">
 				<item name="config" xsi:type="array">
 					<item name="source" xsi:type="string">Shop</item>
@@ -78,14 +78,14 @@
 			</argument>
 			<settings>
 				<dataType>text</dataType>
-				<label translate="true">shop_tel</label>
-				<dataScope>shop_tel</dataScope>
+				<label translate="true">Phone number</label>
+				<dataScope>tel</dataScope>
 				<validation>
 					<rule name="required-entry" xsi:type="boolean">false</rule>
 				</validation>
 			</settings>
 		</field>
-		<field formElement="input" name="shop_business_hours" sortOrder="40">
+		<field formElement="input" name="business_hours" sortOrder="40">
 			<argument name="data" xsi:type="array">
 				<item name="config" xsi:type="array">
 					<item name="source" xsi:type="string">Shop</item>
@@ -93,14 +93,14 @@
 			</argument>
 			<settings>
 				<dataType>text</dataType>
-				<label translate="true">shop_business_hours</label>
-				<dataScope>shop_business_hours</dataScope>
+				<label translate="true">Opening time</label>
+				<dataScope>business_hours</dataScope>
 				<validation>
 					<rule name="required-entry" xsi:type="boolean">false</rule>
 				</validation>
 			</settings>
 		</field>
-		<field formElement="input" name="shop_holidays" sortOrder="50">
+		<field formElement="input" name="holidays" sortOrder="50">
 			<argument name="data" xsi:type="array">
 				<item name="config" xsi:type="array">
 					<item name="source" xsi:type="string">Shop</item>
@@ -108,27 +108,35 @@
 			</argument>
 			<settings>
 				<dataType>text</dataType>
-				<label translate="true">shop_holidays</label>
-				<dataScope>shop_holidays</dataScope>
+				<label translate="true">Regular holidays</label>
+				<dataScope>holidays</dataScope>
 				<validation>
 					<rule name="required-entry" xsi:type="boolean">false</rule>
 				</validation>
 			</settings>
 		</field>
-		<field formElement="input" name="source_code" sortOrder="60">
-			<argument name="data" xsi:type="array">
-				<item name="config" xsi:type="array">
-					<item name="source" xsi:type="string">Shop</item>
-				</item>
-			</argument>
-			<settings>
-				<dataType>text</dataType>
-				<label translate="true">source_code</label>
-				<dataScope>source_code</dataScope>
-				<validation>
-					<rule name="required-entry" xsi:type="boolean">false</rule>
-				</validation>
-			</settings>
-		</field>
-	</fieldset>
+        <field formElement="select" name="source_code" sortOrder="60">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Casio\Shop\Ui\Component\Select\Option</item>
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Source Code</item>
+                    <item name="componentType" xsi:type="string">field</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</item>
+                    <item name="elementTmpl" xsi:type="string">ui/grid/filters/elements/ui-select</item>
+                    <item name="dataScope" xsi:type="string">field_name</item>
+                    <item name="filterOptions" xsi:type="boolean">true</item>
+                    <item name="showCheckbox" xsi:type="boolean">true</item>
+                    <item name="chipsEnabled" xsi:type="boolean">true</item>
+                    <item name="disableLabel" xsi:type="boolean">true</item>
+                    <item name="multiple" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">60</item>
+                    <item name="listens" xsi:type="array">
+                        <item name="newOption" xsi:type="string">toggleOptionSelected</item>
+                    </item>
+                    <item name="source" xsi:type="string">conditions</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
 </form>

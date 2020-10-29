@@ -2,6 +2,6 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
 	<menu>
 		<add id="Casio::top_level" module="Casio_Shop" resource="Magento_Backend::content" sortOrder="9999" title="Casio"/>
-		<add action="casio_shop/shop/index" id="Casio_Shop::casio_shop_shop" module="Casio_Shop" parent="Casio::top_level" resource="Magento_Backend::content" sortOrder="9999" title="Shop"/>
+		<add action="casio_shop/shop/index" id="Casio_Shop::casio_shop" module="Casio_Shop" parent="Casio::top_level" resource="Magento_Backend::content" sortOrder="9999" title="Shop"/>
 	</menu>
 </config>

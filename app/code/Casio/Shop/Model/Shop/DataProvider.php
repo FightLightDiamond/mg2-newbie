@@ -56,13 +56,13 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
         foreach ($items as $model) {
             $this->loadedData[$model->getId()] = $model->getData();
         }
-        $data = $this->dataPersistor->get('casio_shop_shop');
+        $data = $this->dataPersistor->get('casio_shop');
 
         if (!empty($data)) {
             $model = $this->collection->getNewEmptyItem();
             $model->setData($data);
             $this->loadedData[$model->getId()] = $model->getData();
-            $this->dataPersistor->clear('casio_shop_shop');
+            $this->dataPersistor->clear('casio_shop');
         }
 
         return $this->loadedData;

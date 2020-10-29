@@ -7,16 +7,16 @@ type Query {
     @cache(cacheable: false)
 
     shop (
-        shop_code: String @doc(description: "Query by code.")
+        code: String @doc(description: "Query by code.")
     ): Shop @resolver( class: "Casio\\Shop\\Model\\Resolver\\Shop")
 }
 
 input ShopsFilterInput {
-    shop_name: FilterTypeInput  @doc(description: "Filter for name")
-    shop_code: FilterTypeInput @doc(description: "Filter for code"),
-    shop_tel: FilterTypeInput @doc(description: "Filter for number phone"),
-    shop_business_hours: FilterTypeInput @doc(description: "Filter for opening time")
-    shop_holidays: FilterTypeInput @doc(description: "Filter for regular holiday")
+    name: FilterTypeInput  @doc(description: "Filter for name")
+    code: FilterTypeInput @doc(description: "Filter for code"),
+    tel: FilterTypeInput @doc(description: "Filter for number phone"),
+    business_hours: FilterTypeInput @doc(description: "Filter for opening time")
+    holidays: FilterTypeInput @doc(description: "Filter for regular holiday")
     source_code: FilterTypeInput @doc(description: "Filter for source code")
     or: ShopsFilterInput
 }
@@ -28,10 +28,10 @@ type Shops {
 
 type Shop {
     shop_id: String  @doc(description: "Query by id.")
-    shop_name: String  @doc(description: "Query by  shop_name.")
-    shop_code: String  @doc(description: "Query by  shop_code.")
-    shop_tel: String  @doc(description: "Query by  shop_tel.")
-    shop_business_hours: String  @doc(description: "Query by  shop_business_hours.")
-    shop_holidays: String  @doc(description: "Query by   shop_holidays.")
+    name: String  @doc(description: "Query by  name.")
+    code: String  @doc(description: "Query by  code.")
+    tel: String  @doc(description: "Query by  tel.")
+    business_hours: String  @doc(description: "Query by  business_hours.")
+    holidays: String  @doc(description: "Query by   holidays.")
     source_code: String  @doc(description: "Query by  source_code.")
 }

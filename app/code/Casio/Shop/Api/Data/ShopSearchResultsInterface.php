@@ -17,7 +17,7 @@ interface ShopSearchResultsInterface extends \Magento\Framework\Api\SearchResult
     public function getItems();
 
     /**
-     * Set shop_name list.
+     * Set name list.
      * @param \Casio\Shop\Api\Data\ShopInterface[] $items
      * @return $this
      */

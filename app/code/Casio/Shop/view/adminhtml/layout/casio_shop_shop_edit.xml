@@ -3,7 +3,7 @@
 	<update handle="styles"/>
 	<body>
 		<referenceContainer name="content">
-			<uiComponent name="casio_shop_shop_form"/>
+			<uiComponent name="casio_shop_form"/>
 		</referenceContainer>
 	</body>
 </page>

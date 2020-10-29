@@ -1,12 +1,12 @@
 {
-    "casio_shop_shop": {
+    "casio_shop": {
         "column": {
             "shop_id": true,
-            "shop_name": true,
-            "shop_code": true,
-            "shop_tel": true,
-            "shop_business_hours": true,
-            "shop_holidays": true,
+            "name": true,
+            "code": true,
+            "tel": true,
+            "business_hours": true,
+            "holidays": true,
             "source_code": true
         },
         "constraint": {

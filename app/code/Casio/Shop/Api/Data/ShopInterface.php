@@ -11,11 +11,11 @@ interface ShopInterface extends \Magento\Framework\Api\ExtensibleDataInterface
 {
 
     const SOURCE_CODE = 'source_code';
-    const SHOP_TEL = 'shop_tel';
-    const SHOP_NAME = 'shop_name';
-    const SHOP_HOLIDAYS = 'shop_holidays';
-    const SHOP_CODE = 'shop_code';
-    const SHOP_BUSINESS_HOURS = 'shop_business_hours';
+    const TEL = 'tel';
+    const NAME = 'name';
+    const HOLIDAYS = 'holidays';
+    const CODE = 'code';
+    const BUSINESS_HOURS = 'business_hours';
     const SHOP_ID = 'shop_id';
 
     /**
@@ -32,17 +32,17 @@ interface ShopInterface extends \Magento\Framework\Api\ExtensibleDataInterface
     public function setShopId($shopId);
 
     /**
-     * Get shop_name
+     * Get name
      * @return string|null
      */
-    public function getShopName();
+    public function getName();
 
     /**
-     * Set shop_name
+     * Set name
      * @param string $shopName
      * @return \Casio\Shop\Api\Data\ShopInterface
      */
-    public function setShopName($shopName);
+    public function setName($shopName);
 
     /**
      * Retrieve existing extension attributes object or create a new one.
@@ -60,56 +60,56 @@ interface ShopInterface extends \Magento\Framework\Api\ExtensibleDataInterface
     );
 
     /**
-     * Get shop_code
+     * Get code
      * @return string|null
      */
-    public function getShopCode();
+    public function getCode();
 
     /**
-     * Set shop_code
+     * Set code
      * @param string $shopCode
      * @return \Casio\Shop\Api\Data\ShopInterface
      */
-    public function setShopCode($shopCode);
+    public function setCode($shopCode);
 
     /**
-     * Get shop_tel
+     * Get tel
      * @return string|null
      */
-    public function getShopTel();
+    public function getTel();
 
     /**
-     * Set shop_tel
+     * Set tel
      * @param string $shopTel
      * @return \Casio\Shop\Api\Data\ShopInterface
      */
-    public function setShopTel($shopTel);
+    public function setTel($shopTel);
 
     /**
-     * Get shop_business_hours
+     * Get business_hours
      * @return string|null
      */
-    public function getShopBusinessHours();
+    public function getBusinessHours();
 
     /**
-     * Set shop_business_hours
+     * Set business_hours
      * @param string $shopBusinessHours
      * @return \Casio\Shop\Api\Data\ShopInterface
      */
-    public function setShopBusinessHours($shopBusinessHours);
+    public function setBusinessHours($shopBusinessHours);
 
     /**
-     * Get shop_holidays
+     * Get holidays
      * @return string|null
      */
-    public function getShopHolidays();
+    public function getHolidays();
 
     /**
-     * Set shop_holidays
+     * Set holidays
      * @param string $shopHolidays
      * @return \Casio\Shop\Api\Data\ShopInterface
      */
-    public function setShopHolidays($shopHolidays);
+    public function setHolidays($shopHolidays);
 
     /**
      * Get source_code

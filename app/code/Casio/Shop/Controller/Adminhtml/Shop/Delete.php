@@ -6,9 +6,39 @@
 declare(strict_types=1);
 
 namespace Casio\Shop\Controller\Adminhtml\Shop;
+use Magento\Backend\App\Action;
+use Magento\Backend\Model\View\Result\RedirectFactory;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Ui\Component\MassAction\Filter;
+use Casio\Shop\Model\ShopFactory;
+use Casio\Shop\Model\ResourceModel\Shop\CollectionFactory;
 
-class Delete extends \Casio\Shop\Controller\Adminhtml\Shop
+/**
+ *
+ * Class Delete
+ * @package Casio\Shop\Controller\Adminhtml\Shop
+ */
+class Delete extends Action
 {
+
+    private $factory;
+    private $filter;
+    private $collectionFactory;
+    private $resultRedirect;
+
+    public function __construct(
+        Action\Context $context,
+        ShopFactory $factory,
+        Filter $filter,
+        CollectionFactory $collectionFactory,
+        RedirectFactory $redirectFactory
+    ) {
+        parent::__construct($context);
+        $this->factory = $factory;
+        $this->filter = $filter;
+        $this->collectionFactory = $collectionFactory;
+        $this->resultRedirect = $redirectFactory;
+    }
 
     /**
      * Delete action
@@ -17,31 +47,35 @@ class Delete extends \Casio\Shop\Controller\Adminhtml\Shop
      */
     public function execute()
     {
-        /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
-        $resultRedirect = $this->resultRedirectFactory->create();
-        // check if we know what should be deleted
-        $id = $this->getRequest()->getParam('shop_id');
-        if ($id) {
+        $collection = $this->filter->getCollection($this->collectionFactory->create());
+        $total = 0;
+        $err = 0;
+
+        foreach ($collection->getItems() as $item) {
             try {
-                // init model and delete
-                $model = $this->_objectManager->create(\Casio\Shop\Model\Shop::class);
-                $model->load($id);
-                $model->delete();
-                // display success message
-                $this->messageManager->addSuccessMessage(__('You deleted the Shop.'));
-                // go to grid
-                return $resultRedirect->setPath('*/*/');
-            } catch (\Exception $e) {
-                // display error message
-                $this->messageManager->addErrorMessage($e->getMessage());
-                // go back to edit form
-                return $resultRedirect->setPath('*/*/edit', ['shop_id' => $id]);
+                $item->delete();
+                $total++;
+            } catch (LocalizedException $exception) {
+                $err++;
             }
         }
-        // display error message
-        $this->messageManager->addErrorMessage(__('We can\'t find a Shop to delete.'));
-        // go to grid
-        return $resultRedirect->setPath('*/*/');
+
+        if ($total) {
+            $this->messageManager->addSuccessMessage(
+                __('A total of %1 record(s) have been deleted.', $total)
+            );
+        }
+
+        if ($err) {
+            $this->messageManager->addErrorMessage(
+                __(
+                    'A total of %1 record(s) haven\'t been deleted. Please see server logs for more details.',
+                    $err
+                )
+            );
+        }
+
+        return $this->resultRedirectFactory->create()->setPath('*/*/');
     }
 }
 

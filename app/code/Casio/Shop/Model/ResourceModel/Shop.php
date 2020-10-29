@@ -17,7 +17,7 @@ class Shop extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
      */
     protected function _construct()
     {
-        $this->_init('casio_shop_shop', 'shop_id');
+        $this->_init('casio_shop', 'shop_id');
     }
 }
 

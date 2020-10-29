@@ -67,7 +67,7 @@ class ShopRepository implements ShopRepositoryInterface
     public function getByCode($code)
     {
         $shop = $this->shopFactory->create();
-        $this->resource->load($shop, $code, 'shop_code');
+        $this->resource->load($shop, $code, 'code');
 
         if (!$shop->getId()) {
             throw new NoSuchEntityException(__('Shop with code "%1" does not exist.', $code));

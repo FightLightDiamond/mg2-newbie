@@ -34,7 +34,7 @@ class Shop implements ResolverInterface
         array $value = null,
         array $args = null
     ) {
-        return $this->shopDataProvider->getShop($args['shop_code']);
+        return $this->shopDataProvider->getShop($args['code']);
     }
 }
 

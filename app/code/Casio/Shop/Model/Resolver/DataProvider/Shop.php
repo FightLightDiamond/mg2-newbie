@@ -26,13 +26,13 @@ class Shop
     }
 
     /**
-     * @param $shop_code
+     * @param $code
      * @return \Casio\Shop\Api\Data\ShopInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function getShop($shop_code)
+    public function getShop($code)
     {
-        return $this->repository->getByCode($shop_code)->toArray();
+        return $this->repository->getByCode($code)->toArray();
     }
 }
 

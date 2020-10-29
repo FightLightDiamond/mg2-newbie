@@ -13,11 +13,11 @@ interface ShopRepositoryInterface
 {
     /**
      * Retrieve Shop
-     * @param string $shop_code
+     * @param string $code
      * @return \Casio\Shop\Api\Data\ShopInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function getByCode($shop_code);
+    public function getByCode($code);
 
     /**
      * Retrieve Shop matching the specified criteria.

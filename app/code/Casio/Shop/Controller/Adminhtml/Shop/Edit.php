@@ -46,7 +46,7 @@ class Edit extends \Casio\Shop\Controller\Adminhtml\Shop
                 return $resultRedirect->setPath('*/*/');
             }
         }
-        $this->_coreRegistry->register('casio_shop_shop', $model);
+        $this->_coreRegistry->register('casio_shop', $model);
 
         // 3. Build edit form
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */

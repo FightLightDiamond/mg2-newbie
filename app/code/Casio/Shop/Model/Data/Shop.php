@@ -32,22 +32,22 @@ class Shop extends \Magento\Framework\Api\AbstractExtensibleObject implements Sh
     }
 
     /**
-     * Get shop_name
+     * Get name
      * @return string|null
      */
-    public function getShopName()
+    public function getName()
     {
-        return $this->_get(self::SHOP_NAME);
+        return $this->_get(self::NAME);
     }
 
     /**
-     * Set shop_name
+     * Set name
      * @param string $shopName
      * @return \Casio\Shop\Api\Data\ShopInterface
      */
-    public function setShopName($shopName)
+    public function setName($shopName)
     {
-        return $this->setData(self::SHOP_NAME, $shopName);
+        return $this->setData(self::NAME, $shopName);
     }
 
     /**
@@ -71,79 +71,79 @@ class Shop extends \Magento\Framework\Api\AbstractExtensibleObject implements Sh
     }
 
     /**
-     * Get shop_code
+     * Get code
      * @return string|null
      */
-    public function getShopCode()
+    public function getCode()
     {
-        return $this->_get(self::SHOP_CODE);
+        return $this->_get(self::CODE);
     }
 
     /**
-     * Set shop_code
+     * Set code
      * @param string $shopCode
      * @return \Casio\Shop\Api\Data\ShopInterface
      */
-    public function setShopCode($shopCode)
+    public function setCode($shopCode)
     {
-        return $this->setData(self::SHOP_CODE, $shopCode);
+        return $this->setData(self::CODE, $shopCode);
     }
 
     /**
-     * Get shop_tel
+     * Get tel
      * @return string|null
      */
-    public function getShopTel()
+    public function getTel()
     {
-        return $this->_get(self::SHOP_TEL);
+        return $this->_get(self::TEL);
     }
 
     /**
-     * Set shop_tel
+     * Set tel
      * @param string $shopTel
      * @return \Casio\Shop\Api\Data\ShopInterface
      */
-    public function setShopTel($shopTel)
+    public function setTel($shopTel)
     {
-        return $this->setData(self::SHOP_TEL, $shopTel);
+        return $this->setData(self::TEL, $shopTel);
     }
 
     /**
-     * Get shop_business_hours
+     * Get business_hours
      * @return string|null
      */
-    public function getShopBusinessHours()
+    public function getBusinessHours()
     {
-        return $this->_get(self::SHOP_BUSINESS_HOURS);
+        return $this->_get(self::BUSINESS_HOURS);
     }
 
     /**
-     * Set shop_business_hours
+     * Set business_hours
      * @param string $shopBusinessHours
      * @return \Casio\Shop\Api\Data\ShopInterface
      */
-    public function setShopBusinessHours($shopBusinessHours)
+    public function setBusinessHours($shopBusinessHours)
     {
-        return $this->setData(self::SHOP_BUSINESS_HOURS, $shopBusinessHours);
+        return $this->setData(self::BUSINESS_HOURS, $shopBusinessHours);
     }
 
     /**
-     * Get shop_holidays
+     * Get holidays
      * @return string|null
      */
-    public function getShopHolidays()
+    public function getHolidays()
     {
-        return $this->_get(self::SHOP_HOLIDAYS);
+        return $this->_get(self::HOLIDAYS);
     }
 
     /**
-     * Set shop_holidays
+     * Set holidays
      * @param string $shopHolidays
      * @return \Casio\Shop\Api\Data\ShopInterface
      */
-    public function setShopHolidays($shopHolidays)
+    public function setHolidays($shopHolidays)
     {
-        return $this->setData(self::SHOP_HOLIDAYS, $shopHolidays);
+        return $this->setData(self::HOLIDAYS, $shopHolidays);
     }
 
     /**

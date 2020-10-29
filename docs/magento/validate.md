@@ -1,0 +1,92 @@
+```
+min_text_length
+max_text_length
+max-words
+min-words
+range-words
+letters-with-basic-punc
+alphanumeric
+letters-only
+no-whitespace
+zip-range
+integer
+vinUS
+dateITA
+dateNL
+time
+time12h
+phoneUS
+phoneUK
+mobileUK
+stripped-min-length
+email2
+url2
+credit-card-types
+ipv4
+ipv6
+pattern
+validate-no-html-tags
+validate-select
+validate-no-empty
+validate-alphanum-with-spaces
+validate-data
+validate-street
+validate-phoneStrict
+validate-phoneLax
+validate-fax
+validate-email
+validate-emailSender
+validate-password
+validate-admin-password
+validate-url
+validate-clean-url
+validate-xml-identifier
+validate-ssn
+validate-zip-us
+validate-date-au
+validate-currency-dollar
+validate-not-negative-number
+validate-zero-or-greater
+validate-greater-than-zero
+validate-css-length
+validate-number
+validate-number-range
+validate-digits
+validate-digits-range
+validate-range
+validate-alpha
+validate-code
+validate-alphanum
+validate-date
+validate-identifier
+validate-zip-international
+validate-state
+less-than-equals-to
+greater-than-equals-to
+validate-emails
+validate-cc-number
+validate-cc-ukss
+required-entry
+checked
+not-negative-amount
+validate-per-page-value-list
+validate-new-password
+validate-item-quantity
+equalTo
+```
+
+```
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <fieldset name="general">
+        <field name="priority" sortOrder="1000" formElement="input">
+            <settings>
+                <validation>
+                    <rule name="not-negative-amount" xsi:type="boolean">true</rule>
+                </validation>
+                [...]
+            </settings>
+        </field>
+    </fieldset>
+</form>
+```

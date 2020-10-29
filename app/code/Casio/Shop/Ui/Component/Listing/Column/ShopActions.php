@@ -9,7 +9,6 @@ namespace Casio\Shop\Ui\Component\Listing\Column;
 
 class ShopActions extends \Magento\Ui\Component\Listing\Columns\Column
 {
-
     const URL_PATH_EDIT = 'casio_shop/shop/edit';
     const URL_PATH_DELETE = 'casio_shop/shop/delete';
     const URL_PATH_DETAILS = 'casio_shop/shop/details';
@@ -53,26 +52,12 @@ class ShopActions extends \Magento\Ui\Component\Listing\Columns\Column
                                 ]
                             ),
                             'label' => __('Edit')
-                        ],
-                        'delete' => [
-                            'href' => $this->urlBuilder->getUrl(
-                                static::URL_PATH_DELETE,
-                                [
-                                    'shop_id' => $item['shop_id']
-                                ]
-                            ),
-                            'label' => __('Delete'),
-                            'confirm' => [
-                                'title' => __('Delete "${ $.$data.title }"'),
-                                'message' => __('Are you sure you wan\'t to delete a "${ $.$data.title }" record?')
-                            ]
                         ]
                     ];
                 }
             }
         }
-        
+
         return $dataSource;
     }
 }
-

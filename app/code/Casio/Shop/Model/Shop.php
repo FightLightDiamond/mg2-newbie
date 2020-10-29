@@ -17,7 +17,7 @@ class Shop extends \Magento\Framework\Model\AbstractModel
 
     protected $dataObjectHelper;
 
-    protected $_eventPrefix = 'casio_shop_shop';
+    protected $_eventPrefix = 'casio_shop';
 
     /**
      * @param \Magento\Framework\Model\Context $context

@@ -14,7 +14,6 @@ use Magento\Framework\View\Element\Block\ArgumentInterface;
  */
 class UserDataProvider implements ArgumentInterface
 {
-
     /**
      * @var Data
      */

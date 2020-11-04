@@ -1,0 +1,12 @@
+<config>
+    <group id="casio">
+        <job name="casio_test_job" instance="Casio\ImportShipment\Controller\Adminhtml\Queue\Order" method="execute">
+            <schedule>* * * * *</schedule>
+        </job>
+    </group>
+    <group id="default">
+        <job instance="Casio\ImportShipment\Cron\Test" method="execute" name="mageplaza_helloworld_cron">
+            <schedule>* * * * *</schedule>
+        </job>
+    </group>
+</config>

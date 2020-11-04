@@ -27,10 +27,10 @@ class UpdateProduct
         return $price;
     }
 
-    public function aroundGetPrice(\Magento\Catalog\Model\Product $subject, callable $proceed)
-    {
-        return 20000;
-    }
+//    public function aroundGetPrice(\Magento\Catalog\Model\Product $subject, callable $proceed)
+//    {
+//        return 20000;
+//    }
 
     public function afterGetName(\Magento\Catalog\Model\Product $subject, $result)
     {

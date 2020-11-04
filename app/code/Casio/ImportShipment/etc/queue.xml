@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Casio Commerce.
+ *
+ * @category   Casio
+ * @package    Casio_EncryptionCustomerData
+ * @author     Casio Team
+ * @copyright  Copyright (c) 2020-2021 Casio Commerce.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework-message-queue:etc/queue.xsd">
+    <broker topic="casio_test_queue" exchange="magento-db" type="db">
+        <queue name="save" consumer="casio_test_queue" consumerInstance="Magento\Framework\MessageQueue\Consumer" handler="Casio\ImportShipment\Model\Queue\Consumer::process"/>
+    </broker>
+</config>

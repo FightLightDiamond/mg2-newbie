@@ -1,0 +1,157 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var \Magento\Contact\Block\ContactForm $block */
+/** @var \Magento\Contact\ViewModel\UserDataProvider $viewModel */
+
+$viewModel = $block->getViewModel();
+?>
+<form class="form contact"
+      action="<?= $block->escapeUrl($block->getFormAction()) ?>"
+      id="contact-form"
+      method="post"
+      data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>"
+      data-mage-init='{"validation":{}}'>
+    <fieldset class="fieldset">
+        <legend class="legend"><span><?= $block->escapeHtml(__('Write Us')) ?></span></legend>
+        <br/>
+        <div class="field note no-label">
+            <?= $block->escapeHtml(__('Jot us a note and we’ll get back to you as quickly as possible.')) ?>
+        </div>
+        <div class="field title required">
+            <label class="label" for="title"><span><?= $block->escapeHtml(__('Title')) ?></span></label>
+            <div class="control">
+                <select name="title"
+                        id="title"
+                        title="<?= $block->escapeHtmlAttr(__('Title')) ?>"
+                        value="<?= $block->escapeHtmlAttr($viewModel->getTitle()) ?>"
+                        class="input-text"
+                        type="text"
+                        data-validate="{required:true}">
+                    <option value="1"><?php echo __('1') ?></option>
+                    <option value="2"><?php echo __('2') ?></option>
+                    <option value="3"><?php echo __('3') ?></option>
+                </select>
+            </div>
+        </div>
+        <!--        <div class="field name required">-->
+        <!--            <label class="label" for="name"><span>-->
+        <? //= $block->escapeHtml(__('Name')) ?><!--</span></label>-->
+        <!--            <div class="control">-->
+        <!--                <input name="name"-->
+        <!--                       id="name"-->
+        <!--                       title="--><? //= $block->escapeHtmlAttr(__('Name')) ?><!--"-->
+        <!--                       value="--><? //= $block->escapeHtmlAttr($viewModel->getUserName()) ?><!--"-->
+        <!--                       class="input-text"-->
+        <!--                       type="text"-->
+        <!--                       data-validate="{required:true}"/>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <div class="field first_name required">
+            <label class="label" for="first_name"><span><?= $block->escapeHtml(__('First Name')) ?></span></label>
+            <div class="control">
+                <input name="first_name"
+                       id="first_name"
+                       title="<?= $block->escapeHtmlAttr(__('First Name')) ?>"
+                       value="<?= $block->escapeHtmlAttr($viewModel->getFirstName()) ?>"
+                       class="input-text"
+                       type="text"
+                       data-validate="{required:true}"/>
+            </div>
+        </div>
+        <div class="field last_name required">
+            <label class="label" for="last_name"><span><?= $block->escapeHtml(__('Last Name')) ?></span></label>
+            <div class="control">
+                <input name="last_name"
+                       id="last_name"
+                       title="<?= $block->escapeHtmlAttr(__('Last Name')) ?>"
+                       value="<?= $block->escapeHtmlAttr($viewModel->getLastName()) ?>"
+                       class="input-text"
+                       type="text"
+                       data-validate="{required:true}"/>
+            </div>
+        </div>
+        <div class="field email required">
+            <label class="label" for="email"><span><?= $block->escapeHtml(__('Email')) ?></span></label>
+            <div class="control">
+                <input name="email"
+                       id="email"
+                       title="<?= $block->escapeHtmlAttr(__('Email')) ?>"
+                       value="<?= $block->escapeHtmlAttr($viewModel->getUserEmail()) ?>"
+                       class="input-text"
+                       type="email"
+                       data-validate="{required:true, 'validate-email':true}"/>
+            </div>
+        </div>
+        <div class="field confirmation_email required">
+            <label class="label" for="confirmation_email"><span><?= $block->escapeHtml(__('Confirmation Email')) ?></span></label>
+            <div class="control">
+                <input name="confirmation_email"
+                       id="confirmation_email"
+                       title="<?= $block->escapeHtmlAttr(__('Confirmation Email')) ?>"
+                       value="<?= $block->escapeHtmlAttr($viewModel->getConfirmationEmail()) ?>"
+                       class="input-text"
+                       type="email"
+                       data-validate="{required:true, 'validate-email':true, equalTo:'#email'}"/>
+            </div>
+        </div>
+        <!--        <div class="field telephone">-->
+        <!--            <label class="label" for="telephone"><span>-->
+        <? //= $block->escapeHtml(__('Phone Number')) ?><!--</span></label>-->
+        <!--            <div class="control">-->
+        <!--                <input name="telephone"-->
+        <!--                       id="telephone"-->
+        <!--                       title="--><? //= $block->escapeHtmlAttr(__('Phone Number')) ?><!--"-->
+        <!--                       value="--><? //= $block->escapeHtmlAttr($viewModel->getUserTelephone()) ?><!--"-->
+        <!--                       class="input-text"-->
+        <!--                       type="tel" />-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <div class="field comment required">
+            <label class="label" for="comment">
+                <span><?= $block->escapeHtml(__('What’s on your mind?')) ?></span>
+            </label>
+            <div class="control">
+                <textarea name="comment"
+                          id="comment"
+                          title="<?= $block->escapeHtmlAttr(__('What’s on your mind?')) ?>"
+                          class="input-text"
+                          cols="5"
+                          rows="3"
+                          data-validate="{required:true}"><?= $block->escapeHtml($viewModel->getUserComment()) ?></textarea>
+            </div>
+        </div>
+        <div class="field policy required">
+            <label class="label" for="policy">
+                <span><?= $block->escapeHtml(__('What’s on your mind?')) ?></span>
+            </label>
+            <div class="control">
+                <iframe height="300px" width="100%" src="https://mage.to.vn/privacy-policy-cookie-restriction-mode"
+                        frameborder="0"></iframe>
+            </div>
+        </div>
+        <div class="field agree_policy required">
+            <div class="control">
+                <input name="agree_policy"
+                       type="checkbox"
+                       id="email"
+                       title="<?= $block->escapeHtmlAttr(__('Agree Policy')) ?>"
+                       value="<?= $block->escapeHtmlAttr($viewModel->getAgreePolicy()) ?>"
+                       class="input-text"
+                       data-validate="{required:true}"/> abc
+            </div>
+        </div>
+        <?= $block->getChildHtml('form.additional.info') ?>
+    </fieldset>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <input type="hidden" name="hideit" id="hideit" value=""/>
+            <button type="submit" title="<?= $block->escapeHtmlAttr(__('Submit')) ?>" class="action submit primary">
+                <span><?= $block->escapeHtml(__('Submit')) ?></span>
+            </button>
+        </div>
+    </div>
+</form>
